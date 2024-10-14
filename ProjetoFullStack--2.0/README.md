@@ -17,39 +17,41 @@ O Figma foi utilizado para a abstração do domínio desta API, sendo útil na a
 
 ```mermaid
 classDiagram
-  class User {
+  class Investor {
     -String name
     -Account account
-    -Feature[] features
-    -Card card
-    -News[] news
+    -Stock[] stocks
+    -ETF[] etfs
+    -FII[] fiis
   }
 
   class Account {
-    -String number
-    -String agency
+    -String accountId
     -Number balance
-    -Number limit
+    -Number margin
   }
 
-  class Feature {
-    -String icon
-    -String description
+  class Stock {
+    -String tickerSymbol
+    -Number quantity
+    -Number purchasePrice
   }
 
-  class Card {
-    -String number
-    -Number limit
+  class ETF {
+    -String fundName
+    -Number sharesOwned
+    -Number purchasePrice
   }
 
-  class News {
-    -String icon
-    -String description
+  class FII {
+    -String name
+    -Number investmentAmount
+    -String investmentStrategy
   }
 
-  User "1" *-- "1" Account
-  User "1" *-- "N" Feature
-  User "1" *-- "1" Card
-  User "1" *-- "N" News
+  Investor "1" *-- "1" Account
+  Investor "1" *-- "N" Stock
+  Investor "1" *-- "N" ETF
+  Investor "1" *-- "N" FII
+
 ```
-
